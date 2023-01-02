@@ -1,3 +1,4 @@
+export { default as Footer } from '../..\\components\\Footer.vue'
 export { default as Navbar } from '../..\\components\\Navbar.vue'
 export { default as Search } from '../..\\components\\Search.vue'
 
