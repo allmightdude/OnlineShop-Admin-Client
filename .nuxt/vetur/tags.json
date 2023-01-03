@@ -8,6 +8,9 @@
   "Footer": {
     "description": "Auto imported from components/Footer.vue"
   },
+  "MainResult": {
+    "description": "Auto imported from components/MainResult.vue"
+  },
   "Navbar": {
     "description": "Auto imported from components/Navbar.vue"
   },

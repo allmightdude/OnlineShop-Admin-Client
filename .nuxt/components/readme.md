@@ -9,5 +9,6 @@ You can directly use them in pages and other components without the need to impo
 - `<BaseButton>` | `<base-button>` (components/BaseButton.vue)
 - `<FeaturedProduct>` | `<featured-product>` (components/FeaturedProduct.vue)
 - `<Footer>` | `<footer>` (components/Footer.vue)
+- `<MainResult>` | `<main-result>` (components/MainResult.vue)
 - `<Navbar>` | `<navbar>` (components/Navbar.vue)
 - `<Search>` | `<search>` (components/Search.vue)

@@ -30,14 +30,12 @@
 
 
 <style lang="scss" scoped>
-    .mainContent{
-        margin: 0 auto;
-        max-width: 90rem;
-    }
+
 
     .featuredProduct{
         margin-top: 3rem;
-
+        background-color: rgb(238, 238, 238);
+        padding:3rem;
         &__img{
             width: 25rem;
 

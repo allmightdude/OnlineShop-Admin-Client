@@ -43,9 +43,9 @@ li {
   padding: 1rem;
 }
 
-.text-center{
-  text-align: center;
-}
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+.text-left{text-align: left;}
 
 h1,
 h2,
@@ -85,3 +85,7 @@ a {
 .ai-c{align-items: center;}
 .gap-xs{gap : .5rem}
 .gap-sm{gap : 1rem}
+
+.fz-1{font-size: 1.1rem;}
+.fz-3{font-size: 1.3rem;}
+.fz-5{font-size: 1.5rem;}
