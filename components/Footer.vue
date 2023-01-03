@@ -97,6 +97,7 @@
 
     &__holder{
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-around;
         padding: 3rem;
     }
