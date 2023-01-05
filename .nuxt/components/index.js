@@ -1,4 +1,5 @@
 export { default as BaseButton } from '../..\\components\\BaseButton.vue'
+export { default as BaseCard } from '../..\\components\\BaseCard.vue'
 export { default as FeaturedProduct } from '../..\\components\\FeaturedProduct.vue'
 export { default as Footer } from '../..\\components\\Footer.vue'
 export { default as MainResult } from '../..\\components\\MainResult.vue'

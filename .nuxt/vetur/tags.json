@@ -2,6 +2,9 @@
   "BaseButton": {
     "description": "Auto imported from components/BaseButton.vue"
   },
+  "BaseCard": {
+    "description": "Auto imported from components/BaseCard.vue"
+  },
   "FeaturedProduct": {
     "description": "Auto imported from components/FeaturedProduct.vue"
   },

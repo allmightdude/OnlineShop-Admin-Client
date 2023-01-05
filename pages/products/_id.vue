@@ -76,6 +76,31 @@
 
         <div class="fz-1">length : <a href="#">106 Pages</a></div>
       </div>
+
+      <base-card>
+        <div class="product__buy">
+          <input type="number" min="0" />
+          <div class="product__price">$93</div>
+
+          <h4 class="product__stock mt-3">In Stock</h4>
+          <p class="fz-1">Ships from and sold by Amazon.com</p>
+
+          <div class="actions mt-4">
+            <base-button>Add to Card</base-button>
+            <base-button mode="grey">Buy Now!</base-button>
+          </div>
+
+          <div class="product__buy-des fz-1 mt-3 bd-bottom">
+            This item ships to California Get it by Monday. Sep 23 - Monday
+            ,Sept. 30 Choose this date at checkout.
+          </div>
+
+          <div class="product__deliver fz-1 bd-bottom">
+            <a href="#"> Deliver to California </a>
+          </div>
+
+        </div>
+      </base-card>
     </div>
   </main>
 </template>
@@ -95,7 +120,7 @@
   }
 
   &__detail {
-    flex: 0 0 50%;
+    flex: 0 0 60%;
     padding: 0 6rem;
   }
 
@@ -140,6 +165,22 @@
         display: block;
       }
     }
+  }
+
+  &__buy {
+
+    &-des {
+      padding: 1rem 1rem 2rem 0;
+    }
+  }
+
+  input[type="number"] {
+    width: 5rem;
+    text-align: center;
+  }
+  &__price {
+    float: right;
+    color: rgb(224, 55, 55);
   }
 }
 
