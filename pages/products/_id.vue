@@ -12,17 +12,17 @@
       </ul>
     </div>
 
-    <div class="product">
+    <div class="product bd-bottom">
       <div class="product__img">
         <div class="product__img mt-3">
-          <img src="/img/amazonImg.jpg" alt="" />
+          <img :src="product.photo" alt="" />
         </div>
 
         <div class="product__follow">
           <div class="product__follow-img">
-            <img src="/img/wp2700926-ginko-mushishi-wallpaper.jpg" alt="" />
+            <img :src="product.ownerID.photo" width="" />
           </div>
-          <h4 class="product__follow-name">Farid sabzi</h4>
+          <h4 class="product__follow-name fz-1">{{ product.ownerID.name }}</h4>
 
           <base-button mode="grey"> + Follow </base-button>
         </div>
@@ -30,12 +30,14 @@
 
       <div class="product__detail">
         <div class="product__title">
-          <h1>Harry Poter</h1>
+          <h1>{{ product.title }}</h1>
           <span>Paperback</span>
         </div>
 
         <div class="product__author bd-bottom fz-1">
-          by <a href="" class="product__link">Farid Sabzi</a> (Author)
+          by
+          <a href="" class="product__link">{{ product.ownerID.name }}</a>
+          (Author)
         </div>
 
         <div class="see-all">
@@ -71,7 +73,7 @@
         </ul>
 
         <div class="product__description bd-bottom fz-2">
-          This Book is awesome
+          {{ product.description }}
         </div>
 
         <div class="fz-1">length : <a href="#">106 Pages</a></div>
@@ -98,12 +100,40 @@
           <div class="product__deliver fz-1 bd-bottom">
             <a href="#"> Deliver to California </a>
           </div>
-
         </div>
       </base-card>
     </div>
+
+    <div class="more mt-3">
+      <h2>More about the author</h2>
+      <div class="d-flex mt-3">
+        <div class="author__img">
+          <img :src="product.ownerID.photo" width="" />
+          <base-button class="mt-2">Follow</base-button>
+        </div>
+        <div class="author__desc">
+          <h4>Biography</h4>
+          <p class="mt-2 fz-1">my name is Walter white</p>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
+
+<script>
+export default {
+  async asyncData({ $axios, params }) {
+    try {
+      let res = await $axios.$get(`products/${params.id}`);
+      return {
+        product: res.product,
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .mainProduct {
@@ -195,5 +225,20 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.author__img {
+  width: 20rem;
+  img {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.author__desc {
+  align-self: start;
 }
 </style>
