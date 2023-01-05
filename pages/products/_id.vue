@@ -170,7 +170,6 @@
   &__buy {
     &-des {
       padding: 1rem 1rem 2rem 0;
-      overflow: hidden;
     }
   }
 
