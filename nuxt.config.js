@@ -1,4 +1,4 @@
-const URL = "http://localhost:4000/api/";
+const URL = "http://localhost:4000";
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -37,6 +37,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
     "@nuxtjs/style-resources",
+    "@nuxtjs/auth",
   ],
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -48,10 +49,13 @@ export default {
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    proxy : true,
-    baseURL : URL
+    proxy: true,
+    baseURL: URL,
   },
 
+  proxy: {
+    "/api": URL,
+  },
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
@@ -61,6 +65,20 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            propertyName: "token",
+          },
+          logout: true,
+        },
+      },
+    },
+  },
+
   server: {
     port: 8000,
   },

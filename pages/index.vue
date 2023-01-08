@@ -11,7 +11,7 @@
 export default {
     async asyncData({$axios}) {
         try {
-            let res = await $axios.$get('products');
+            let res = await $axios.$get('/api/products');
             console.log(res.products);
             return{
               products : res.products
