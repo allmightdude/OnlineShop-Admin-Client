@@ -82,7 +82,7 @@
       <base-card>
         <div class="product__buy">
           <input type="number" min="0" />
-          <div class="product__price">$93</div>
+          <div class="product__price">${{product.price}}</div>
 
           <h4 class="product__stock mt-3">In Stock</h4>
           <p class="fz-1">Ships from and sold by Amazon.com</p>
