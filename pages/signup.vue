@@ -1,6 +1,10 @@
 <template>
   <div class="form">
-    <base-card>
+    <div class="text-center">
+      <nuxt-link to="/"> <img src="/img/logo-black1.png" /> </nuxt-link>
+    </div>
+
+    <base-card class="mt-4">
       <h1>Create Account</h1>
       <form @submit.prevent="onSignup">
         <div class="form__control">
@@ -36,6 +40,8 @@
 <script>
 export default {
   layout: "none",
+  middleware: "auth",
+  auth: "guest",
 
   data() {
     return {
