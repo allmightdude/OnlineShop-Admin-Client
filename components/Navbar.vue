@@ -35,7 +35,7 @@
         <div class="language"><span>En</span> <i class="fa fa-globe"></i></div>
 
         <template class="nav__account" v-if="$auth.state.loggedIn">
-          <span> Hello Farid</span>
+          <span> Hello {{$auth.state.user.name}}</span>
           <ul class="nav__account-list">
             <b>Account & List <i class="fa fa-angle-down"></i></b>
           </ul>
