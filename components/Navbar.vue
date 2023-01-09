@@ -2,7 +2,9 @@
   <div class="navbar">
     <div class="navbar__top">
       <div class="navbar__logo">
-        <img src="/img/logo.png" class="navbar__logo-img" />
+        <nuxt-link to="/">
+          <img src="/img/logo.png" class="navbar__logo-img" />
+        </nuxt-link>
       </div>
 
       <Search />
@@ -35,7 +37,7 @@
         <div class="language"><span>En</span> <i class="fa fa-globe"></i></div>
 
         <template class="nav__account" v-if="$auth.state.loggedIn">
-          <span> Hello {{$auth.state.user.name}}</span>
+          <span> Hello <nuxt-link to="/profile">{{$auth.state.user.name}}</nuxt-link></span>
           <ul class="nav__account-list">
             <b>Account & List <i class="fa fa-angle-down"></i></b>
           </ul>
