@@ -37,9 +37,30 @@ export default {
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
     "@nuxtjs/style-resources",
-    "@nuxtjs/auth",
+    "@nuxtjs/auth-next"
   ],
-
+  auth: {
+    strategies: {
+      local: {
+        //      scheme: "refresh",
+        token: {
+          property: "token", //property name that the Back-end sends for you as a access token for saving on localStorage and cookie of user browser
+          global: true,
+          required: true,
+          type: "Bearer",
+        },
+        user: {
+          property: "user",
+          autoFetch: true,
+        },
+        endpoints: {
+          login: { url: "/api/auth/login", method: "post" },
+          logout: false, 
+          user: { url: "/api/auth/user", method: "get" },
+        },
+      },
+    },
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
 
   css: ["~assets/scss/style.scss"],
@@ -53,8 +74,8 @@ export default {
     baseURL: URL,
   },
 
-  proxy: {
-    "/api": URL,
+  proxy:{
+    '/api' : URL
   },
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -65,19 +86,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-
-  auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            propertyName: "token",
-          },
-          logout: true,
-        },
-      },
-    },
-  },
 
   server: {
     port: 8000,

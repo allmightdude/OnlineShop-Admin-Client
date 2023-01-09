@@ -13,16 +13,18 @@
         </div>
         <div class="form__control">
           <label for="email">E-mail</label>
-          <input type="email" class="form__input" v-model="email" />
+          <input type="text" class="form__input" v-model="email" />
         </div>
         <div class="form__control">
           <label for="password">Password</label>
           <input type="password" class="form__input" v-model="password" />
         </div>
 
-        <base-button type="submit" class="mt-4">
-          Create Your Account
-        </base-button>
+        <div class="form__control">
+          <base-button type="submit" class="mt-4">
+            Create Your Account
+          </base-button>
+        </div>
 
         <p class="mt-3 fz-1 bd-bottom">
           By creating an account , you agree
@@ -54,7 +56,7 @@ export default {
     async onSignup() {
       try {
         let res = await this.$axios.$post(
-          "http://localhost:4000/api/auth/signup",
+          "/api/auth/signup",
           {
             name: this.name,
             email: this.email,
@@ -72,7 +74,7 @@ export default {
             },
           });
 
-          this.$router.push("/");
+          this.$router.replace("/");
           console.log(user);
         }
       } catch (error) {

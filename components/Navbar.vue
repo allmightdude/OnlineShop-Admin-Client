@@ -5,7 +5,7 @@
         <img src="/img/logo.png" class="navbar__logo-img" />
       </div>
 
-      <Search/>
+      <Search />
     </div>
 
     <nav class="nav">
@@ -33,17 +33,21 @@
 
       <div class="nav__info">
         <div class="language"><span>En</span> <i class="fa fa-globe"></i></div>
-        <div class="nav__account">
-          <span> Hello Sign in </span>
+
+        <template class="nav__account" v-if="$auth.state.loggedIn">
+          <span> Hello Farid</span>
           <ul class="nav__account-list">
             <b>Account & List <i class="fa fa-angle-down"></i></b>
           </ul>
-        </div>
+          <div class="nav__orders"><b>Orders</b></div>
+          <div class="nav__orders d-flex ai-c gap-xs">
+            <i class="fa fa-cart-plus"></i><b>Cart</b>
+          </div>
+        </template>
 
-        <div class="nav__orders"><b>Orders</b></div>
-        <div class="nav__orders d-flex ai-c gap-xs">
-          <i class="fa fa-cart-plus"></i><b>Cart</b>
-        </div>
+        <template class="nav__account" v-else>
+          <nuxt-link to="/signup">Register</nuxt-link>
+        </template>
       </div>
     </nav>
   </div>
@@ -64,7 +68,7 @@ export default {
   padding: 2rem;
   font-size: 1.2rem;
 
-  &__top{
+  &__top {
     width: 100%;
     display: flex;
   }
