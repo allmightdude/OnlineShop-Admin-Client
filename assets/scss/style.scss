@@ -139,4 +139,25 @@ a {
     flex-direction: column;
     margin-top: 1rem;
   }
+
+  &__input{
+    margin-top: 1rem;
+  }
+}
+
+.image-upload {
+  margin: 1rem 0;
+  input {
+    display: none;
+  }
+
+  label {
+    border: 1px dashed #ccc;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

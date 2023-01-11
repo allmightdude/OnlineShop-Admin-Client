@@ -28,6 +28,13 @@
     "_name": "_6e167678"
   },
   {
+    "name": "reviews-id",
+    "path": "/reviews/:id?",
+    "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\reviews\\\\_id.vue",
+    "chunkName": "pages/reviews/_id",
+    "_name": "_90cbccfe"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\index.vue",

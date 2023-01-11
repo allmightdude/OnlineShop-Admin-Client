@@ -8,6 +8,7 @@ const _bb28f552 = () => interopDefault(import('..\\pages\\login.vue' /* webpackC
 const _9e673bd2 = () => interopDefault(import('..\\pages\\profile.vue' /* webpackChunkName: "pages/profile" */))
 const _1141dacc = () => interopDefault(import('..\\pages\\signup.vue' /* webpackChunkName: "pages/signup" */))
 const _6e167678 = () => interopDefault(import('..\\pages\\products\\_id.vue' /* webpackChunkName: "pages/products/_id" */))
+const _90cbccfe = () => interopDefault(import('..\\pages\\reviews\\_id.vue' /* webpackChunkName: "pages/reviews/_id" */))
 const _4e783b80 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -37,6 +38,10 @@ export const routerOptions = {
     path: "/products/:id?",
     component: _6e167678,
     name: "products-id"
+  }, {
+    path: "/reviews/:id?",
+    component: _90cbccfe,
+    name: "reviews-id"
   }, {
     path: "/",
     component: _4e783b80,
