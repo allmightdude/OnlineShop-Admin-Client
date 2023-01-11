@@ -71,6 +71,13 @@ textarea:focus {
   outline: 1px solid #f1c40f;
 }
 
+input,
+textarea {
+  padding: 0.2rem .5rem;
+}
+::placeholder{
+  font-size: 1.2rem;
+}
 .main-auto {
   max-width: 50rem;
   margin: 0 auto;
