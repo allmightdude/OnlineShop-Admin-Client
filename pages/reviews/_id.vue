@@ -2,7 +2,7 @@
   <div class="profile mt-4">
     <h1>Create Review</h1>
     <div class="product__title">
-      <img src="/img/amazonImg.jpg" alt="" />
+      <img :src="product.photo" alt="" />
       <h2>Product Title</h2>
     </div>
     <div class="bd-bottom"></div>
@@ -11,15 +11,17 @@
     <form @submit.prevent="onUpdate">
       <div class="form__control">
         <h1><b>Add photo or video</b></h1>
-        <p class="mt-2 fz-1">Shoppers find and videos helpful than text alone.</p>
+        <p class="mt-2 fz-1">
+          Shoppers find and videos helpful than text alone.
+        </p>
 
         <div class="image-upload">
           <label for="file-input">
             <i class="fa fa-plus"></i>
           </label>
 
-          <input id="file-input" type="file" @change="onFileSelected" />
-          <p>{{ fileName }}</p>
+          <input id="file-input" type="file" />
+          <!-- <p>{{ fileName }}</p> -->
         </div>
 
         <div class="bd-bottom"></div>
@@ -55,16 +57,25 @@
         <input type="text" />
       </div>
 
-      <p class="mt-2 fz-1">Don't worry , you can always change this on your profile.</p>
+      <p class="mt-2 fz-1">
+        Don't worry , you can always change this on your profile.
+      </p>
 
       <base-button type="submit" class="mt-4"> Submit </base-button>
-
     </form>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  async asyncData({ $axios , params }) {
+    let res = await $axios.$get(`/api/products/${params.id}`);
+    return {
+        product : res.product
+    }
+
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -90,9 +101,9 @@ export default {};
 .user {
   display: flex;
   gap: 1rem;
-  margin: 1rem 0 ;
+  margin: 1rem 0;
 
-  input{
+  input {
     width: 90%;
   }
 
@@ -101,9 +112,9 @@ export default {};
     height: 5rem;
     border-radius: 50%;
 
-    img{
-        width: 100%;
-        height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 }
