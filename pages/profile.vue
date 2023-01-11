@@ -28,34 +28,50 @@
       </div>
 
       <base-button type="submit" class="mt-4"> Update Profile </base-button>
+      <div class="bd-bottom"></div>
+      <base-button mode="grey mt-2" @click.native="onLogout">
+        <i class="fa fa-sign-out"></i> Logout</base-button
+      >
     </form>
   </div>
 </template>
 
 <script>
 export default {
-
   data() {
     return {
-      name : "",
-      email : "",
-      password : ""
-    }
+      name: "",
+      email: "",
+      password: "",
+    };
   },
   methods: {
-    async onUpdate(){
+    async onUpdate() {
       try {
         let data = {
-          name : this.name,
-          email : this.email,
-          password : this.password
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        };
+        let res = await this.$axios.$put("/api/auth/user", data);
+
+        if (res.success) {
+          this.name = "";
+          this.email = "";
+          this.password = "";
+          await this.$auth.fetchUser();
         }
-        let res = await this.$axios.$put("/api/auth/user" , data);
-        console.log();
       } catch (error) {
         console.log(error);
       }
-    }
+    },
+
+    async onLogout() {
+      await this.$auth.logout();
+      await this.$auth.fetchUser();
+      this.$router.replace('/');
+
+    },
   },
 };
 </script>
