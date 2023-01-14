@@ -78,7 +78,14 @@
           <base-tag>sam waltson</base-tag>
         </div>
       </div>
+
+
       <div class="reviewSection__body">
+        <p class="fz-1"><b>Showing 1-8 of 1,250 reviews</b></p>
+
+        <select class="mt-3 fz-1">
+            <option value="top">Top Reviews</option>
+        </select>
         <review-item></review-item>
         <review-item></review-item>
         <review-item></review-item>
