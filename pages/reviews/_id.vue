@@ -3,12 +3,18 @@
     <h1>Create Review</h1>
     <div class="product__title">
       <img :src="product.photo" alt="" />
-      <h2>Product Title</h2>
+      <h2>{{ product.title }}</h2>
     </div>
     <div class="bd-bottom"></div>
-    <h1>Overall Rating</h1>
 
-    <form @submit.prevent="onUpdate">
+    <form @submit.prevent="onAddReview">
+      <h1>Overall Rating</h1>
+
+      <template>
+        <no-ssr placeholder="loading...">
+          <star-rating :star-size="20" v-model="rating"></star-rating>
+        </no-ssr>
+      </template>
       <div class="form__control">
         <h1><b>Add photo or video</b></h1>
         <p class="mt-2 fz-1">
@@ -20,8 +26,8 @@
             <i class="fa fa-plus"></i>
           </label>
 
-          <input id="file-input" type="file" />
-          <!-- <p>{{ fileName }}</p> -->
+          <input id="file-input" type="file" @change="onFileSelected" />
+          <p>{{ fileName }}</p>
         </div>
 
         <div class="bd-bottom"></div>
@@ -34,6 +40,7 @@
         <input
           class="form__input"
           placeholder="Whats's meat important to Know?"
+          v-model="headline"
         />
       </div>
 
@@ -42,6 +49,7 @@
           <h2>Write your review</h2>
         </label>
         <textarea
+          v-model="body"
           class="form__input"
           placeholder="What do you like or dislike ? What did you see this product for?"
         />
@@ -54,31 +62,78 @@
         <div class="user__img">
           <img src="/img/avatar.png" alt="" />
         </div>
-        <input type="text" />
+        <input type="text" :value="$auth.state.user.name" />
       </div>
 
       <p class="mt-2 fz-1">
         Don't worry , you can always change this on your profile.
       </p>
 
-      <base-button type="submit" class="mt-4"> Submit </base-button>
+      <base-button v-if="!isLoading" type="submit" class="mt-4">
+        Submit
+      </base-button>
+      <div class="loader" v-else>
+        <img src="/img/loader.gif" alt="" />
+      </div>
     </form>
   </div>
 </template>
 
 <script>
 export default {
-  async asyncData({ $axios , params }) {
+  async asyncData({ $axios, params }) {
     let res = await $axios.$get(`/api/products/${params.id}`);
     return {
-        product : res.product
-    }
+      product: res.product,
+    };
+  },
 
+  data() {
+    return {
+      rating: 0,
+      body: "",
+      headline: "",
+      selectedFile: null,
+      fileName: "",
+
+      isLoading: false,
+    };
+  },
+  methods: {
+    onFileSelected(event) {
+      this.selectedFile = event.target.files[0];
+      this.fileName = event.target.files[0].name;
+    },
+
+    async onAddReview() {
+      this.isLoading = true;
+      try {
+        let data = new FormData();
+
+        data.append("headline", this.headline);
+        data.append("body", this.body);
+        data.append("rating", this.rating);
+        data.append("photo", this.selectedFile);
+
+        let response = await this.$axios.$post(
+          `/api/reviews/${this.$route.params.id}`,
+          data
+        );
+
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoading = false;
+    },
+  },
+  components: {
+    StarRating: () => (process.browser ? import("vue-star-rating") : null),
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .profile {
   max-width: 60rem;
   margin: 3rem auto;
@@ -102,6 +157,7 @@ export default {
   display: flex;
   gap: 1rem;
   margin: 1rem 0;
+  align-items: center;
 
   input {
     width: 90%;
@@ -116,6 +172,18 @@ export default {
       width: 100%;
       height: 100%;
     }
+  }
+
+  .vue-star-rating-star {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+}
+
+.loader {
+  img {
+    width: 4rem;
+    height: 4rem;
   }
 }
 </style>
