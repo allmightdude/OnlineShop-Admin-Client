@@ -1,9 +1,12 @@
 export { default as BaseButton } from '../..\\components\\BaseButton.vue'
 export { default as BaseCard } from '../..\\components\\BaseCard.vue'
+export { default as BaseTag } from '../..\\components\\BaseTag.vue'
 export { default as FeaturedProduct } from '../..\\components\\FeaturedProduct.vue'
 export { default as Footer } from '../..\\components\\Footer.vue'
 export { default as MainResult } from '../..\\components\\MainResult.vue'
 export { default as Navbar } from '../..\\components\\Navbar.vue'
+export { default as ReviewItem } from '../..\\components\\ReviewItem.vue'
+export { default as ReviewSection } from '../..\\components\\ReviewSection.vue'
 export { default as Search } from '../..\\components\\Search.vue'
 
 // nuxt/nuxt.js#8607

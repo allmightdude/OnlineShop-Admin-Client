@@ -120,7 +120,9 @@ export default {
           data
         );
 
-        console.log(response);
+        if(response.success){
+          this.$router.replace(`/products/${this.$route.params.id}`)
+        }
       } catch (error) {
         console.log(error);
       }

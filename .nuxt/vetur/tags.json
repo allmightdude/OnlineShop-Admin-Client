@@ -5,6 +5,9 @@
   "BaseCard": {
     "description": "Auto imported from components/BaseCard.vue"
   },
+  "BaseTag": {
+    "description": "Auto imported from components/BaseTag.vue"
+  },
   "FeaturedProduct": {
     "description": "Auto imported from components/FeaturedProduct.vue"
   },
@@ -16,6 +19,12 @@
   },
   "Navbar": {
     "description": "Auto imported from components/Navbar.vue"
+  },
+  "ReviewItem": {
+    "description": "Auto imported from components/ReviewItem.vue"
+  },
+  "ReviewSection": {
+    "description": "Auto imported from components/ReviewSection.vue"
   },
   "Search": {
     "description": "Auto imported from components/Search.vue"

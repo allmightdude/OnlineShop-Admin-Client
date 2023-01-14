@@ -8,8 +8,11 @@ You can directly use them in pages and other components without the need to impo
 
 - `<BaseButton>` | `<base-button>` (components/BaseButton.vue)
 - `<BaseCard>` | `<base-card>` (components/BaseCard.vue)
+- `<BaseTag>` | `<base-tag>` (components/BaseTag.vue)
 - `<FeaturedProduct>` | `<featured-product>` (components/FeaturedProduct.vue)
 - `<Footer>` | `<footer>` (components/Footer.vue)
 - `<MainResult>` | `<main-result>` (components/MainResult.vue)
 - `<Navbar>` | `<navbar>` (components/Navbar.vue)
+- `<ReviewItem>` | `<review-item>` (components/ReviewItem.vue)
+- `<ReviewSection>` | `<review-section>` (components/ReviewSection.vue)
 - `<Search>` | `<search>` (components/Search.vue)

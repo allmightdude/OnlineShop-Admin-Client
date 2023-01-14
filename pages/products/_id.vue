@@ -117,6 +117,10 @@
         </div>
       </div>
     </div>
+
+    <div class="bd-bottom"></div>
+
+    <review-section></review-section>
   </main>
 </template>
 
