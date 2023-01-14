@@ -1,7 +1,7 @@
 <template>
   <div class="reviewSection">
     <div class="reviewSection__left">
-      <h2>1,510 customer reviews</h2>
+      <h2>{{product.rating.length}} customer reviews</h2>
 
       <div class="mt-2">4.5 out of 5 stars</div>
 
@@ -59,7 +59,7 @@
       <p class="fz-1">Share your thoughts with pur customers</p>
 
       <div>
-        <base-button mode="grey">Write a customer review</base-button>
+        <base-button :linkTo="reviewPage" mode="grey">Write a customer review</base-button>
       </div>
       <div class="bd-bottom"></div>
     </div>
@@ -68,8 +68,18 @@
       <div class="reviewSection__header">
         <h1>Reviews</h1>
 
+        <!-- customer photos -->
         <a href="">See all customer images</a>
 
+        <div class="customer__gallery d-flex mt-3">
+          <div
+            class="customer__photo"
+            v-for="review in reviews"
+            :key="review._id"
+          >
+            <img :src="review.photo" alt="" />
+          </div>
+        </div>
         <h2><b>Read Reviews that mention</b></h2>
 
         <div class="reviewSection__tags">
@@ -79,20 +89,33 @@
         </div>
       </div>
 
-
       <div class="reviewSection__body">
-        <p class="fz-1"><b>Showing 1-8 of 1,250 reviews</b></p>
+        <p class="fz-1"><b>Showing 1-8 of {{product.rating.length}} reviews</b></p>
 
         <select class="mt-3 fz-1">
-            <option value="top">Top Reviews</option>
+          <option value="top">Top Reviews</option>
         </select>
-        <review-item></review-item>
-        <review-item></review-item>
-        <review-item></review-item>
+        <review-item
+          v-for="review in reviews"
+          :key="review._id"
+          :review="review"
+        ></review-item>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["product", "reviews"],
+
+  computed:{
+    reviewPage(){
+        return '/reviews/' + this.product._id
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .reviewSection {
@@ -104,7 +127,7 @@
   &__left {
     flex: 0 0 20%;
   }
-  
+
   &__right {
     flex: 0 0 70%;
   }
@@ -154,5 +177,17 @@
 button {
   width: 100%;
   margin-top: 2rem;
+}
+
+.customer__gallery {
+}
+.customer__photo {
+  height: 14rem;
+  width: 14rem;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 </style>

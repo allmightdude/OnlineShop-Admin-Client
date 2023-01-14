@@ -120,7 +120,7 @@
 
     <div class="bd-bottom"></div>
 
-    <review-section></review-section>
+    <review-section :product="product" :reviews="reviews"></review-section>
   </main>
 </template>
 
@@ -128,9 +128,16 @@
 export default {
   async asyncData({ $axios, params }) {
     try {
-      let res = await $axios.$get(`/api/products/${params.id}`);
+      let singleProduct = await $axios.$get(`/api/products/${params.id}`);
+      let manyReviews = await $axios.$get(`/api/reviews/${params.id}`);
+
+      const [productResponse , reviewsresponse] = await Promise.all([
+        singleProduct,
+        manyReviews
+      ])
       return {
-        product: res.product,
+        product: productResponse.product,
+        reviews: reviewsresponse.reviews,
       };
     } catch (error) {
       console.log(error);

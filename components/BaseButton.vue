@@ -62,4 +62,8 @@ export default {
   padding: .5rem 2rem;
 }
 
+a{
+  color: #2c3e50;
+  display: block;
+}
 </style>
