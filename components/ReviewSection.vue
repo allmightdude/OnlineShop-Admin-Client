@@ -1,7 +1,7 @@
 <template>
   <div class="reviewSection">
     <div class="reviewSection__left">
-      <h2>{{product.rating.length}} customer reviews</h2>
+      <h2>{{product.reviews.length}} customer reviews</h2>
 
       <div class="mt-2">4.5 out of 5 stars</div>
 
@@ -90,7 +90,7 @@
       </div>
 
       <div class="reviewSection__body">
-        <p class="fz-1"><b>Showing 1-8 of {{product.rating.length}} reviews</b></p>
+        <p class="fz-1"><b>Showing 1-8 of {{product.reviews.length}} reviews</b></p>
 
         <select class="mt-3 fz-1">
           <option value="top">Top Reviews</option>

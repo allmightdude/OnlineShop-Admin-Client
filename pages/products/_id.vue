@@ -34,6 +34,20 @@
           <span>Paperback</span>
         </div>
 
+        <div class="product__rate">
+          <client-only>
+            <star-rating
+              :rating="product.averageRating"
+              :show-rating="false"
+              :glow="2"
+              :border-width="1"
+              :rounded-corners="true"
+              :read-only="true"
+              :star-size="18"
+            ></star-rating>
+          </client-only>
+        </div>
+
         <div class="product__author bd-bottom fz-1">
           by
           <a href="" class="product__link">{{ product.ownerID.name }}</a>
@@ -82,7 +96,7 @@
       <base-card>
         <div class="product__buy">
           <input type="number" min="0" />
-          <div class="product__price">${{product.price}}</div>
+          <div class="product__price">${{ product.price }}</div>
 
           <h4 class="product__stock mt-3">In Stock</h4>
           <p class="fz-1">Ships from and sold by Amazon.com</p>
@@ -131,10 +145,10 @@ export default {
       let singleProduct = await $axios.$get(`/api/products/${params.id}`);
       let manyReviews = await $axios.$get(`/api/reviews/${params.id}`);
 
-      const [productResponse , reviewsresponse] = await Promise.all([
+      const [productResponse, reviewsresponse] = await Promise.all([
         singleProduct,
-        manyReviews
-      ])
+        manyReviews,
+      ]);
       return {
         product: productResponse.product,
         reviews: reviewsresponse.reviews,
@@ -142,6 +156,9 @@ export default {
     } catch (error) {
       console.log(error);
     }
+  },
+  components: {
+    StarRating: () => (process.browser ? import("vue-star-rating") : null),
   },
 };
 </script>

@@ -3,29 +3,53 @@
     <div class="products__item mt-4" v-for="prd in products" :key="prd._id">
       <div class="products__tag">Best Seller</div>
       <div class="products__img">
-        <img :src="prd.photo" alt="" />
+        <nuxt-link :to="`/products/${prd._id}`">
+          <img :src="prd.photo" alt="" />
+        </nuxt-link>
       </div>
 
       <div class="products__detail">
         <h3 class="product__name">
-          <a class="products__link" href=""> {{ prd.title }} </a>
+          <nuxt-link class="products__link" :to="`/products/${prd._id}`">{{
+            prd.title
+          }}</nuxt-link>
         </h3>
+
+        <div class="product__rating">
+          <client-only>
+            
+          </client-only>
+        </div>
         <span class="products__release fz-1">Sep 3 , 2019</span>
         <div>
           by
           <span class="product__author"
-            ><a href="" class="products__link">{{prd.ownerID.name}}</a></span
+            ><a href="" class="products__link">{{ prd.ownerID.name }}</a></span
           >
         </div>
 
         <div class="fz-1">Ships to USA</div>
+
+        <div class="product__rating">
+          <client-only>
+            <star-rating
+              :rating="prd.averageRating"
+              :show-rating="false"
+              :glow="2"
+              :border-width="1"
+              :rounded-corners="true"
+              :read-only="true"
+              :star-size="18"
+            ></star-rating>
+          </client-only>
+        </div>
         <div class="products__kind">
           <a href="" class="products__link">Hardcover</a>
         </div>
 
         <div class="products__price">
           <span class="products__price-off"
-            ><b>${{prd.price}}<sup>00</sup></b></span
+            ><b>${{ prd.price }}<sup>00</sup></b></span
           >
 
           <span class="products__price-main"><s>$26.00</s></span>
@@ -46,6 +70,9 @@
 <script>
 export default {
   props: ["products"],
+  components: {
+    StarRating: () => (process.browser ? import("vue-star-rating") : null),
+  },
 };
 </script>
 

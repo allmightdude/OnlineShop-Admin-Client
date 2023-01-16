@@ -8,8 +8,8 @@
     </div>
 
     <div class="review__info">
-      <div class="review__stars" v-if="review.rating > 0">
-        <i class="fa fa-star" v-for="rate in review.rating" :key="rate"></i>
+      <div class="review__stars" v-if="review.reviews > 0">
+        <i class="fa fa-star" v-for="rate in review.reviews" :key="rate"></i>
       </div>
       <div v-else class="fz-1">no rate....</div>
       <div class="review__hedline">{{review.headline}}</div>
