@@ -147,9 +147,9 @@ export default {
         let response = await this.$axios.$post("/api/addresses", data);
         console.log(response);
 
-        // if (response.success) {
-        //   this.$router.push("/");
-        // }
+        if (response.success) {
+          this.$router.push("/");
+        }
       } catch (error) {
         console.log(error);
       }
