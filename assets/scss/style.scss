@@ -43,6 +43,14 @@ li {
   padding: 1rem;
 }
 
+.pd-2 {
+  padding: 2rem;
+}
+
+.pd-3 {
+  padding: 3rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -162,9 +170,16 @@ a {
   }
 }
 
-
 .form-auto-0 {
   max-width: 60rem;
   margin: 3rem auto;
   padding: 1rem;
+}
+
+.broadcast {
+  &__list {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+  }
 }

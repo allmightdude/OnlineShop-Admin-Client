@@ -1,5 +1,5 @@
 <template>
-  <main class="mainProduct">
+  <main class="pd-2">
     <div class="broadcast">
       <ul class="broadcast__list">
         <li class="broadcast__item">
@@ -164,9 +164,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mainProduct {
-  padding: 2rem;
-}
 
 .product {
   display: flex;
@@ -238,14 +235,6 @@ export default {
   &__price {
     float: right;
     color: rgb(224, 55, 55);
-  }
-}
-
-.broadcast {
-  &__list {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 1.3rem;
   }
 }
 

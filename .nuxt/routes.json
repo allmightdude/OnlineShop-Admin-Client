@@ -1,5 +1,11 @@
 [
   {
+    "name": "address",
+    "path": "/address",
+    "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\address\\\\index.vue",
+    "chunkName": "pages/address/index"
+  },
+  {
     "name": "login",
     "path": "/login",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\login.vue",
