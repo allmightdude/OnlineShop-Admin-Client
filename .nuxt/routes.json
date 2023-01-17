@@ -18,6 +18,12 @@
     "chunkName": "pages/signup"
   },
   {
+    "name": "address-add",
+    "path": "/address/add",
+    "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\address\\\\add.vue",
+    "chunkName": "pages/address/add"
+  },
+  {
     "name": "products-id",
     "path": "/products/:id?",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\products\\\\_id.vue",

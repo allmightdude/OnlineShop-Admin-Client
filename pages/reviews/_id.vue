@@ -1,5 +1,5 @@
 <template>
-  <div class="profile mt-4">
+  <div class="form-auto-0 mt-4">
     <h1>Create Review</h1>
     <div class="product__title">
       <img :src="product.photo" alt="" />
@@ -136,11 +136,7 @@ export default {
 </script>
 
 <style lang="scss">
-.profile {
-  max-width: 60rem;
-  margin: 3rem auto;
-  padding: 1rem;
-}
+
 
 .product__title {
   display: flex;
