@@ -16,7 +16,7 @@
           >Deliver to <br />
           <i class="fa fa-map-marker" aria-hidden="true"></i>
 
-          <b>California</b></span
+          <b>{{$auth.user.address.country}} , {{$auth.user.address.city}}</b></span
         >
 
         <span class="nav-cart-icon nav-sprite"></span>
