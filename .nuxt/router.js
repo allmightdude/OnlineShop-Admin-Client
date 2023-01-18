@@ -9,6 +9,7 @@ const _bb28f552 = () => interopDefault(import('..\\pages\\login.vue' /* webpackC
 const _9e673bd2 = () => interopDefault(import('..\\pages\\profile.vue' /* webpackChunkName: "pages/profile" */))
 const _1141dacc = () => interopDefault(import('..\\pages\\signup.vue' /* webpackChunkName: "pages/signup" */))
 const _1c791da2 = () => interopDefault(import('..\\pages\\address\\add.vue' /* webpackChunkName: "pages/address/add" */))
+const _df019470 = () => interopDefault(import('..\\pages\\address\\_id.vue' /* webpackChunkName: "pages/address/_id" */))
 const _6e167678 = () => interopDefault(import('..\\pages\\products\\_id.vue' /* webpackChunkName: "pages/products/_id" */))
 const _90cbccfe = () => interopDefault(import('..\\pages\\reviews\\_id.vue' /* webpackChunkName: "pages/reviews/_id" */))
 const _4e783b80 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
@@ -44,6 +45,10 @@ export const routerOptions = {
     path: "/address/add",
     component: _1c791da2,
     name: "address-add"
+  }, {
+    path: "/address/:id",
+    component: _df019470,
+    name: "address-id"
   }, {
     path: "/products/:id?",
     component: _6e167678,

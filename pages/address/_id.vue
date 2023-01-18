@@ -1,6 +1,6 @@
 <template>
   <div class="form-auto-0 mt-4">
-    <form @submit.prevent="onAddAddress">
+    <form @submit.prevent="onUpdateAddress">
       <h1>Add a new address</h1>
       <p class="fz-1">
         or pick up your packages at your convenience from our self-service
@@ -25,7 +25,12 @@
 
       <div class="form__control">
         <label for="fullname"> Full Name </label>
-        <input type="text" class="form__input" v-model="fullName" />
+        <input
+          type="text"
+          class="form__input"
+          v-model="fullName"
+          :placeholder="address.fullName"
+        />
       </div>
 
       <div class="form__control">
@@ -46,22 +51,42 @@
 
       <div class="form__control">
         <label for="city"> City </label>
-        <input type="text" class="form__input" v-model="city" />
+        <input
+          type="text"
+          class="form__input"
+          v-model="city"
+          :placeholder="address.city"
+        />
       </div>
 
       <div class="form__control">
         <label for="state"> State / Province / Region </label>
-        <input type="text" class="form__input" v-model="state" />
+        <input
+          type="text"
+          class="form__input"
+          v-model="state"
+          :placeholder="address.state"
+        />
       </div>
 
       <div class="form__control">
         <label for="zipCode"> Zip Code </label>
-        <input type="text" class="form__input" v-model="zipCode" />
+        <input
+          type="text"
+          class="form__input"
+          v-model="zipCode"
+          :placeholder="address.zipCode"
+        />
       </div>
 
       <div class="form__control">
         <label for="phoneNumber">Phone Number</label>
-        <input type="text" class="form__input" v-model="phoneNumber" />
+        <input
+          type="text"
+          class="form__input"
+          v-model="phoneNumber"
+          :placeholder="address.phoneNumber"
+        />
         <a href="#" class="fz-1">Maybe used to assist delivery</a>
       </div>
 
@@ -76,7 +101,7 @@
         <textarea
           v-model="deliverInstructions"
           class="form__input"
-          placeholder="Provide details such an building description , a nearby landmark , or other navigation instructions."
+          :placeholder="address.city"
         />
       </div>
 
@@ -88,8 +113,8 @@
         <input
           type="text"
           class="form__input"
-          placeholder="1234"
           v-model="securityCode"
+          :placeholder="address.securityCode"
         />
       </div>
 
@@ -103,12 +128,18 @@
 
 <script>
 export default {
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, params }) {
     try {
-      let res = await $axios.$get("/api/countries");
+      let countries = await $axios.$get("/api/countries");
+      let address = await $axios.$get(`/api/addresses/${params.id}`);
 
+      const [countriesRes, addressRes] = await Promise.all([
+        countries.countries,
+        address.address,
+      ]);
       return {
-        countries: res.countries,
+        countries: countriesRes,
+        address: addressRes,
       };
     } catch (error) {
       console.log(error);
@@ -130,7 +161,7 @@ export default {
   },
 
   methods: {
-    async onAddAddress() {
+    async onUpdateAddress() {
       try {
         let data = {
           country: this.country,
@@ -143,74 +174,13 @@ export default {
           deliverInstructions: this.deliverInstructions,
           securityCode: this.securityCode,
         };
+        let res = await this.$axios.$put(`/api/addresses/${this.$route.params.id}`, data);
 
-        let response = await this.$axios.$post("/api/addresses", data);
-        console.log(response);
-
-        if (response.success) {
-          this.$router.push("/address");
+        if(res.success){
+          this.$router.push('/address');
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     },
   },
 };
 </script>
-
-<style lang="scss">
-.product__title {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  margin-top: 1rem;
-  img {
-    width: 7rem;
-    height: 7rem;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-}
-
-.user {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
-  align-items: center;
-
-  input {
-    width: 90%;
-  }
-
-  &__img {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .vue-star-rating-star {
-    width: 2rem !important;
-    height: 2rem !important;
-  }
-}
-
-.loader {
-  img {
-    width: 4rem;
-    height: 4rem;
-  }
-}
-
-select {
-  width: 100%;
-}
-
-.form__input {
-  margin-top: 0.5rem;
-}
-</style>

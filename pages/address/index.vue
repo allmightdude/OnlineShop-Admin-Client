@@ -37,7 +37,8 @@
         </div>
 
         <div class="actions mt-3">
-          <a href="" class="fz-1">Edit</a> |
+          <nuxt-link class="fz-1" :to="`/address/${address._id}`">Edit</nuxt-link> | 
+
           <a href="#" class="fz-1" @click="onDeleteAddress(address._id, index)"
             >Delete</a
           >

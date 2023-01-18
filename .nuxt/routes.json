@@ -30,6 +30,12 @@
     "chunkName": "pages/address/add"
   },
   {
+    "name": "address-id",
+    "path": "/address/:id",
+    "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\address\\\\_id.vue",
+    "chunkName": "pages/address/_id"
+  },
+  {
     "name": "products-id",
     "path": "/products/:id?",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\products\\\\_id.vue",
