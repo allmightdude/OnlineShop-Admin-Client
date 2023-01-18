@@ -102,7 +102,7 @@
           <p class="fz-1">Ships from and sold by Amazon.com</p>
 
           <div class="actions mt-4">
-            <base-button>Add to Card</base-button>
+            <base-button @click.native="addToCart(product)">Add to Card</base-button>
             <base-button mode="grey">Buy Now!</base-button>
           </div>
 
@@ -159,6 +159,12 @@ export default {
   },
   components: {
     StarRating: () => (process.browser ? import("vue-star-rating") : null),
+  },
+
+  methods: {
+    addToCart(product){
+      this.$store.dispatch('cart/addToCart' , {product : product})
+    }
   },
 };
 </script>
