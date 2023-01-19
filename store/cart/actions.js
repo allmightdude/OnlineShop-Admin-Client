@@ -5,4 +5,7 @@ export default {
   changeQuantity(context, payload) {
     context.commit("changeQuantity", payload);
   },
+  removeProduct(context, product) {
+    context.commit("removeProduct", product);
+  },
 };

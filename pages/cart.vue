@@ -23,8 +23,15 @@
             </div>
 
             <div class="mt-2">
-              <input type="number" :value="item.quantity" min="1" max="10" @change="onChangeQuantity($event , item)" /> |
-              <a href="#" class="fz-1">Delete</a>
+              <input
+                type="number"
+                :value="item.quantity"
+                min="1"
+                max="10"
+                @change="onChangeQuantity($event, item)"
+              />
+              |
+              <a href="#" class="fz-1" @click="removeProduct(item)">Delete</a>
             </div>
           </div>
           <div class="product__price">${{ item.price * item.quantity }}</div>
@@ -97,6 +104,9 @@ export default {
         qty : qty,
         product : product
       })
+    },
+    removeProduct(product){
+      this.$store.dispatch('cart/removeProduct' , product)
     }
   },
 };
