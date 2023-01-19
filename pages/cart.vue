@@ -2,38 +2,28 @@
   <main class="main">
     <div class="basket">
       <h3><b>Shopping Cart</b></h3>
-      <div class="cart mt-3">
-        <div class="cart__item bd-bottom bd-top">
-          <h3 class="product__title">
-            <a href="#">Product-title</a>
-            <span class="fz-1">by ProductOwner</span>
-          </h3>
-          <span>PaperBack</span>
-          <div class="stochQuantity fz-1">In Stock</div>
-          <div class="form__control">
-            <label for="" class="fz-1">This order contains to gift</label>
-            <input type="checkbox" />
-          </div>
+      <div class="cart mt-3 bd-top">
+        <div class="cart__item bd-bottom d-flex" v-for="item in cart" :key="item._id">
+          <div class="product__img"><img :src="item.photo" alt="" /></div>
+          <div>
+            <h3 class="product__title">
+              <div class="product__price">
+                ${{ item.price * item.quantity }}
+              </div>
+              <a href="#">{{ item.title }}</a>
+              <span class="fz-1">by {{ item.ownerID.name }}</span>
+            </h3>
+            <span>PaperBack</span>
+            <div class="stochQuantity fz-1">In Stock</div>
+            <div class="form__control">
+              <label for="" class="fz-1">This order contains to gift</label>
+              <input type="checkbox" />
+            </div>
 
-          <div class="mt-2">
-            <input type="number" /> | <a href="#" class="fz-1">Delete</a>
-          </div>
-        </div>
-        
-        <div class="cart__item bd-bottom">
-          <h3 class="product__title">
-            <a href="#">Product-title</a>
-            <span class="fz-1">by ProductOwner</span>
-          </h3>
-          <span>PaperBack</span>
-          <div class="stochQuantity fz-1">In Stock</div>
-          <div class="form__control">
-            <label for="" class="fz-1">This order contains to gift</label>
-            <input type="checkbox" />
-          </div>
-
-          <div class="mt-2">
-            <input type="number" /> | <a href="#" class="fz-1">Delete</a>
+            <div class="mt-2">
+              <input type="number" :value="item.quantity" /> |
+              <a href="#" class="fz-1">Delete</a>
+            </div>
           </div>
         </div>
       </div>
@@ -42,7 +32,7 @@
       <base-card class="subTotal">
         <h3>
           SubTotal <i class="fz-2">(2 items) : </i>
-          <span class="total-price">$99</span>
+          <span class="total-price">${{ cartTotalPrice }}</span>
         </h3>
         <div class="form__control">
           <label for="">This order contains to gift</label>
@@ -84,6 +74,19 @@
     </div>
   </main>
 </template>
+
+<script>
+export default {
+  computed: {
+    cart() {
+      return this.$store.getters["cart/getCart"];
+    },
+    cartTotalPrice() {
+      return this.$store.getters["cart/cartTotalPrice"];
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 main {
@@ -153,5 +156,15 @@ main {
 
 input[type="number"] {
   width: 5rem;
+}
+
+.product__price {
+  float: right;
+  color: red;
+}
+
+.product__img{
+  width: 10rem;
+  height: 15rem;
 }
 </style>

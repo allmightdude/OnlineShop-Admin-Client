@@ -3,12 +3,12 @@ export default {
         const cartProduct = state.cart.find(prd => prd._id === product._id);
 
         if(!cartProduct){
-            product.qunatity =  1;
+            product.quantity =  1;
             state.cart.push(product)
         }else{
-            product.qunatity++;
-            let indexOfProduct = state.cart.indexOf(product);
-            state.cart.splice(indexOfProduct , 1 , product)
+            cartProduct.quantity++;
+            let indexOfProduct = state.cart.indexOf(cartProduct);
+            state.cart.splice(indexOfProduct , 1 , cartProduct)
         }
     }
 }

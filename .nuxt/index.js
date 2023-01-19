@@ -19,6 +19,7 @@ import nuxt_plugin_workbox_577d2620 from 'nuxt_plugin_workbox_577d2620' // Sourc
 import nuxt_plugin_metaplugin_6f287170 from 'nuxt_plugin_metaplugin_6f287170' // Source: .\\pwa\\meta.plugin.js (mode: 'all')
 import nuxt_plugin_iconplugin_73d016e4 from 'nuxt_plugin_iconplugin_73d016e4' // Source: .\\pwa\\icon.plugin.js (mode: 'all')
 import nuxt_plugin_axios_e7964658 from 'nuxt_plugin_axios_e7964658' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_localStorage_6f608ce1 from 'nuxt_plugin_localStorage_6f608ce1' // Source: ..\\plugins\\localStorage.js (mode: 'client')
 import nuxt_plugin_auth_42143c48 from 'nuxt_plugin_auth_42143c48' // Source: .\\auth.js (mode: 'all')
 
 // Component: <ClientOnly>
@@ -87,7 +88,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"client-onlineshop","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"},{"hid":"charset","charset":"utf-8"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"client-onlineshop"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"client-onlineshop"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"client-onlineshop"},{"hid":"og:description","name":"og:description","property":"og:description","content":"## Build Setup"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Ffont-awesome\u002F4.7.0\u002Fcss\u002Ffont-awesome.min.css"},{"hid":"shortcut-icon","rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64x64.e3e9fb.png"},{"hid":"apple-touch-icon","rel":"apple-touch-icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_512x512.e3e9fb.png","sizes":"512x512"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.bda7f99a.json","hid":"manifest"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
+    head: {"title":"client-onlineshop","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Ffont-awesome\u002F4.7.0\u002Fcss\u002Ffont-awesome.min.css"}],"style":[],"script":[]},
 
     store,
     router,
@@ -238,6 +239,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_axios_e7964658 === 'function') {
     await nuxt_plugin_axios_e7964658(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_localStorage_6f608ce1 === 'function') {
+    await nuxt_plugin_localStorage_6f608ce1(app.context, inject)
   }
 
   if (typeof nuxt_plugin_auth_42143c48 === 'function') {

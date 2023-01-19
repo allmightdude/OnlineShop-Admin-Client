@@ -16,7 +16,9 @@
           >Deliver to <br />
           <i class="fa fa-map-marker" aria-hidden="true"></i>
 
-          <b>{{$auth.user.address.country}} , {{$auth.user.address.city}}</b></span
+          <b
+            >{{ $auth.user.address.country }} , {{ $auth.user.address.city }}</b
+          ></span
         >
 
         <span class="nav-cart-icon nav-sprite"></span>
@@ -37,13 +39,21 @@
         <div class="language"><span>En</span> <i class="fa fa-globe"></i></div>
 
         <template class="nav__account" v-if="$auth.state.loggedIn">
-          <span> Hello <nuxt-link to="/profile">{{$auth.state.user.name}}</nuxt-link></span>
+          <span>
+            Hello
+            <nuxt-link to="/profile">{{
+              $auth.state.user.name
+            }}</nuxt-link></span
+          >
           <ul class="nav__account-list">
             <b>Account & List <i class="fa fa-angle-down"></i></b>
           </ul>
           <div class="nav__orders"><b>Orders</b></div>
-          <div class="nav__orders d-flex ai-c gap-xs">
-            <i class="fa fa-cart-plus"></i><b>Cart</b>
+          <div class="nav__orders">
+            <nuxt-link to="/cart" class=" d-flex ai-c gap-xs">
+              <i class="fa fa-cart-plus"></i><b>Cart</b>
+              <span>{{ cartLength }}</span>
+            </nuxt-link>
           </div>
         </template>
 
@@ -60,6 +70,12 @@ import Search from "./Search.vue";
 export default {
   components: {
     Search,
+  },
+
+  computed: {
+    cartLength() {
+      return this.$store.getters["cart/cartLength"];
+    },
   },
 };
 </script>
