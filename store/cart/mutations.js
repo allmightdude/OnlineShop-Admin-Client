@@ -10,5 +10,12 @@ export default {
             let indexOfProduct = state.cart.indexOf(cartProduct);
             state.cart.splice(indexOfProduct , 1 , cartProduct)
         }
+    },
+    changeQuantity(state , payload){
+        const cartProduct = state.cart.find(prd => prd._id === payload.product._id);
+        cartProduct.quantity = payload.qty;
+        
+        let indexOfProduct = state.cart.indexOf(cartProduct);
+        state.cart.splice(indexOfProduct , 1 , cartProduct)
     }
 }

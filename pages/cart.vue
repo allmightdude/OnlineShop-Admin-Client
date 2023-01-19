@@ -3,16 +3,18 @@
     <div class="basket">
       <h3><b>Shopping Cart</b></h3>
       <div class="cart mt-3 bd-top">
-        <div class="cart__item bd-bottom d-flex" v-for="item in cart" :key="item._id">
+        <div
+          class="cart__item bd-bottom d-flex"
+          v-for="item in cart"
+          :key="item._id"
+        >
           <div class="product__img"><img :src="item.photo" alt="" /></div>
           <div>
             <h3 class="product__title">
-              <div class="product__price">
-                ${{ item.price * item.quantity }}
-              </div>
               <a href="#">{{ item.title }}</a>
               <span class="fz-1">by {{ item.ownerID.name }}</span>
             </h3>
+
             <span>PaperBack</span>
             <div class="stochQuantity fz-1">In Stock</div>
             <div class="form__control">
@@ -21,10 +23,11 @@
             </div>
 
             <div class="mt-2">
-              <input type="number" :value="item.quantity" /> |
+              <input type="number" :value="item.quantity" min="1" max="10" @change="onChangeQuantity($event , item)" /> |
               <a href="#" class="fz-1">Delete</a>
             </div>
           </div>
+          <div class="product__price">${{ item.price * item.quantity }}</div>
         </div>
       </div>
     </div>
@@ -84,6 +87,17 @@ export default {
     cartTotalPrice() {
       return this.$store.getters["cart/cartTotalPrice"];
     },
+  },
+
+  methods: {
+    onChangeQuantity(event , product){
+      let qty = event.target.value;
+
+      this.$store.dispatch('cart/changeQuantity' , {
+        qty : qty,
+        product : product
+      })
+    }
   },
 };
 </script>
@@ -159,11 +173,12 @@ input[type="number"] {
 }
 
 .product__price {
-  float: right;
   color: red;
+  margin-left: auto;
+  align-self: start;
 }
 
-.product__img{
+.product__img {
   width: 10rem;
   height: 15rem;
 }
