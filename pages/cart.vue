@@ -27,7 +27,6 @@
                 type="number"
                 :value="item.quantity"
                 min="1"
-                max="10"
                 @change="onChangeQuantity($event, item)"
               />
               |
@@ -97,17 +96,15 @@ export default {
   },
 
   methods: {
-    onChangeQuantity(event , product){
-      let qty = event.target.value;
-
-      this.$store.dispatch('cart/changeQuantity' , {
-        qty : qty,
-        product : product
-      })
+    onChangeQuantity(event, product) {
+      this.$store.dispatch("cart/changeQuantity", {
+        qty: parseInt(event.target.value),
+        product: product,
+      });
     },
-    removeProduct(product){
-      this.$store.dispatch('cart/removeProduct' , product)
-    }
+    removeProduct(product) {
+      this.$store.dispatch("cart/removeProduct", product);
+    },
   },
 };
 </script>
@@ -179,7 +176,7 @@ main {
 }
 
 input[type="number"] {
-  width: 5rem;
+  width: 8rem;
 }
 
 .product__price {

@@ -12,7 +12,7 @@
 
     <nav class="nav">
       <div class="nav__deliver">
-        <span
+        <span v-if="$auth.user"
           >Deliver to <br />
           <i class="fa fa-map-marker" aria-hidden="true"></i>
 

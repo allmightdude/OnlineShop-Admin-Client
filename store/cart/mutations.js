@@ -1,12 +1,12 @@
 export default {
-  addToCart(state, product) {
-    const cartProduct = state.cart.find((prd) => prd._id === product._id);
+  addToCart(state, payload) {
+    const cartProduct = state.cart.find((prd) => prd._id === payload.product._id);
 
     if (!cartProduct) {
-      product.quantity = 1;
-      state.cart.push(product);
+      payload.product.quantity = payload.qty;
+      state.cart.push(payload.product);
     } else {
-      cartProduct.quantity++;
+      cartProduct.quantity += payload.qty;
       let indexOfProduct = state.cart.indexOf(cartProduct);
       state.cart.splice(indexOfProduct, 1, cartProduct);
     }
@@ -20,7 +20,7 @@ export default {
     let indexOfProduct = state.cart.indexOf(cartProduct);
     state.cart.splice(indexOfProduct, 1, cartProduct);
   },
-  
+
   removeProduct(state , product){
     let indexOfProduct = state.cart.indexOf(product);
     state.cart.splice(indexOfProduct , 1);

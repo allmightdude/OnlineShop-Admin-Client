@@ -95,14 +95,22 @@
 
       <base-card>
         <div class="product__buy">
-          <input type="number" min="0" />
+          <input
+            type="number"
+            min="1"
+            max="10"
+            :value="qty"
+            @change="onChangeQuantity"
+          />
           <div class="product__price">${{ product.price }}</div>
 
           <h4 class="product__stock mt-3">In Stock</h4>
           <p class="fz-1">Ships from and sold by Amazon.com</p>
 
           <div class="actions mt-4">
-            <base-button @click.native="addToCart(product)">Add to Card</base-button>
+            <base-button @click.native="addToCart(product)"
+              >Add to Card</base-button
+            >
             <base-button mode="grey">Buy Now!</base-button>
           </div>
 
@@ -157,20 +165,28 @@ export default {
       console.log(error);
     }
   },
+  data() {
+    return {
+      qty: 1,
+    };
+  },
   components: {
     StarRating: () => (process.browser ? import("vue-star-rating") : null),
   },
 
   methods: {
-    addToCart(product){
-      this.$store.dispatch('cart/addToCart' , {product : product})
-    }
+    addToCart(product) {
+      this.$store.dispatch("cart/addToCart", { product: product  , qty : parseInt(this.qty)});
+    },
+
+    onChangeQuantity(event) {
+      this.qty = event.target.value;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 .product {
   display: flex;
 

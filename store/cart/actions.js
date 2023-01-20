@@ -1,6 +1,7 @@
 export default {
   addToCart(context, payload) {
-    context.commit("addToCart", payload.product);
+    console.log(payload);
+    context.commit("addToCart", payload);
   },
   changeQuantity(context, payload) {
     context.commit("changeQuantity", payload);
