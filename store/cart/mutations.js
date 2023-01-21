@@ -29,5 +29,10 @@ export default {
   setShipment(state , shipment){
     state.shipment = shipment;
     console.log(shipment);
+  },
+  
+  clearCart(state){
+    state.cart = [];
+    state.shipment = {}
   }
 };

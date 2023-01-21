@@ -67,6 +67,7 @@ export default {
         });
 
         if (res.success) {
+          this.$store.dispatch('cart/clearCart');
           this.$router.replace("/");
         }
       } catch (error) {
