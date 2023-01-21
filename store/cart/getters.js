@@ -17,6 +17,11 @@ export default {
   shipmentPrice(state) {
     return state.shipment.price;
   },
+
+  totalPriceWithShipping(state , getters){
+    return getters.shipmentPrice + getters.cartTotalPrice;
+  },
+
   estimatedDelivery(state) {
     return state.shipment.estimatedDelivery;
   },

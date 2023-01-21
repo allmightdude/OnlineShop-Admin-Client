@@ -236,7 +236,7 @@ export default {
     },
 
     totalPriceWithShipping(){
-      return this.cartTotalPrice + this.shipmentPrice;
+      return this.$store.getters['cart/totalPriceWithShipping'];
     }
   },
 

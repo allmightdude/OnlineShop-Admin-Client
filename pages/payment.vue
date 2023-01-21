@@ -17,7 +17,7 @@
     </div>
 
     <h1 class="mt-2"><b>Make a payment</b></h1>
-    <p>your total price is $9999</p>
+    <p>your total price is ${{totalPriceWithShipping}}</p>
     <p class="bd-bottom">Error</p>
 
     <form class="mt-2">
@@ -40,6 +40,11 @@ export default {
       stripe: null,
       card: null,
     };
+  },
+  computed: {
+    totalPriceWithShipping(){
+      return this.$store.getters['cart/totalPriceWithShipping'];
+    }
   },
   mounted() {
     this.stripe = Stripe(
