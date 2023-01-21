@@ -24,5 +24,10 @@ export default {
   removeProduct(state , product){
     let indexOfProduct = state.cart.indexOf(product);
     state.cart.splice(indexOfProduct , 1);
+  },
+
+  setShipment(state , shipment){
+    state.shipment = shipment;
+    console.log(shipment);
   }
 };

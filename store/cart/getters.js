@@ -13,4 +13,11 @@ export default {
   getCart(state) {
     return state.cart;
   },
+
+  shipmentPrice(state) {
+    return state.shipment.price;
+  },
+  estimatedDelivery(state) {
+    return state.shipment.estimatedDelivery;
+  },
 };

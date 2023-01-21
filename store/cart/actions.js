@@ -9,4 +9,7 @@ export default {
   removeProduct(context, product) {
     context.commit("removeProduct", product);
   },
+  setShipment(context , payload){
+    context.commit('setShipment' , payload)
+  }
 };
