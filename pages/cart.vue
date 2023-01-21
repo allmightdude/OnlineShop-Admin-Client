@@ -97,7 +97,7 @@ export default {
 
   methods: {
     onChangeQuantity(event, product) {
-      this.$store.dispatch("cart/changeQuantity", {
+      this.$store.dispatch("cart/changeQuantity"  , {
         qty: parseInt(event.target.value),
         product: product,
       });

@@ -7,6 +7,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _c51c4940 = () => interopDefault(import('..\\pages\\address\\index.vue' /* webpackChunkName: "pages/address/index" */))
 const _74398b22 = () => interopDefault(import('..\\pages\\cart.vue' /* webpackChunkName: "pages/cart" */))
 const _bb28f552 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
+const _979210ae = () => interopDefault(import('..\\pages\\placeorder.vue' /* webpackChunkName: "pages/placeorder" */))
 const _9e673bd2 = () => interopDefault(import('..\\pages\\profile.vue' /* webpackChunkName: "pages/profile" */))
 const _1141dacc = () => interopDefault(import('..\\pages\\signup.vue' /* webpackChunkName: "pages/signup" */))
 const _1c791da2 = () => interopDefault(import('..\\pages\\address\\add.vue' /* webpackChunkName: "pages/address/add" */))
@@ -38,6 +39,10 @@ export const routerOptions = {
     path: "/login",
     component: _bb28f552,
     name: "login"
+  }, {
+    path: "/placeorder",
+    component: _979210ae,
+    name: "placeorder"
   }, {
     path: "/profile",
     component: _9e673bd2,

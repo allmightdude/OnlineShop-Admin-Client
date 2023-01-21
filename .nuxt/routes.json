@@ -3,70 +3,66 @@
     "name": "address",
     "path": "/address",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\address\\\\index.vue",
-    "chunkName": "pages/address/index",
-    "_name": "_c51c4940"
+    "chunkName": "pages/address/index"
   },
   {
     "name": "cart",
     "path": "/cart",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\cart.vue",
-    "chunkName": "pages/cart",
-    "_name": "_74398b22"
+    "chunkName": "pages/cart"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\login.vue",
-    "chunkName": "pages/login",
-    "_name": "_bb28f552"
+    "chunkName": "pages/login"
+  },
+  {
+    "name": "placeorder",
+    "path": "/placeorder",
+    "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\placeorder.vue",
+    "chunkName": "pages/placeorder"
   },
   {
     "name": "profile",
     "path": "/profile",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\profile.vue",
-    "chunkName": "pages/profile",
-    "_name": "_9e673bd2"
+    "chunkName": "pages/profile"
   },
   {
     "name": "signup",
     "path": "/signup",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\signup.vue",
-    "chunkName": "pages/signup",
-    "_name": "_1141dacc"
+    "chunkName": "pages/signup"
   },
   {
     "name": "address-add",
     "path": "/address/add",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\address\\\\add.vue",
-    "chunkName": "pages/address/add",
-    "_name": "_1c791da2"
+    "chunkName": "pages/address/add"
   },
   {
     "name": "address-id",
     "path": "/address/:id",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\address\\\\_id.vue",
-    "chunkName": "pages/address/_id",
-    "_name": "_df019470"
+    "chunkName": "pages/address/_id"
   },
   {
     "name": "products-id",
     "path": "/products/:id?",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\products\\\\_id.vue",
-    "chunkName": "pages/products/_id",
-    "_name": "_6e167678"
+    "chunkName": "pages/products/_id"
   },
   {
     "name": "reviews-id",
     "path": "/reviews/:id?",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\reviews\\\\_id.vue",
-    "chunkName": "pages/reviews/_id",
-    "_name": "_90cbccfe"
+    "chunkName": "pages/reviews/_id"
   },
   {
     "name": "index",
     "path": "/",
     "component": "G:\\\\Project Files\\\\Resume\\\\Online Shop\\\\client\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_4e783b80"
+    "chunkName": "pages/index"
   }
 ]

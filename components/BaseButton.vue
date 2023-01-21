@@ -1,9 +1,10 @@
 <template>
   <button class="btn" :class="[mode , border , size]">
     <nuxt-link :to="linkTo" v-if="linkTo"><slot></slot></nuxt-link>
-    <span v-else>
+    <!-- <span v-else>
       <slot></slot>
-    </span>
+    </span> -->
+    <slot></slot>
   </button>
 </template>
 
@@ -40,6 +41,9 @@ export default {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
 }
 
 .orange {
