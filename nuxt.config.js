@@ -4,6 +4,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "client-onlineshop",
+    script: [{src : "https://js.stripe.com/v3"}],
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -20,7 +21,7 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{src : "./plugins/localStorage.js" , ssr : false}],
+  plugins: [{ src: "./plugins/localStorage.js", ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -37,7 +38,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
     "@nuxtjs/style-resources",
-    "@nuxtjs/auth-next"
+    "@nuxtjs/auth-next",
   ],
   auth: {
     strategies: {
@@ -55,7 +56,7 @@ export default {
         },
         endpoints: {
           login: { url: "/api/auth/login", method: "post" },
-          logout: false, 
+          logout: false,
           user: { url: "/api/auth/user", method: "get" },
         },
       },
@@ -74,8 +75,8 @@ export default {
     baseURL: URL,
   },
 
-  proxy:{
-    '/api' : URL
+  proxy: {
+    "/api": URL,
   },
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
