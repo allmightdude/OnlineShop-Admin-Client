@@ -42,7 +42,7 @@
 
       <div class="box d-flex jc-sw">
         <div class="box__item fz-1">
-          <h4>Estimated Delivery : 29 November 2022</h4>
+          <h4>Estimated Delivery : {{ estimatedDelivery }}</h4>
           <div class="cart mt-3 bd-top">
             <div
               class="cart__item bd-bottom d-flex gap-sm ai-c"
@@ -67,7 +67,10 @@
 
                 <p class="fz-1">Sold by Amazon.com Services , Inc</p>
 
-                <base-button mode="grey" size="sm-size"> <i class="fa fa-shopping-basket"></i>Add a gift recept</base-button>
+                <base-button mode="grey" size="sm-size">
+                  <i class="fa fa-shopping-basket"></i>Add a gift
+                  recept</base-button
+                >
                 <p class="fz-1">and see other gift options</p>
               </div>
             </div>
@@ -79,18 +82,26 @@
             <b>Choose a delivery option:</b>
           </h5>
 
-          <div class="form__radio d-flex">
-            <input type="radio" />
+          <div class="form__radio d-flex gap-sm mt-3">
+            <input
+              type="radio"
+              name="order"
+              @change="onChooseShipping('normal')"
+            />
             <div>
               <p class="text-green"><b>Average 7 business days</b></p>
-              <p>$49.98 - Shipping</p>
+              <p>$13.98 - Shipping</p>
             </div>
           </div>
 
-          <div class="form__radio d-flex mt-2">
-            <input type="radio" />
+          <div class="form__radio d-flex mt-2 gap-sm">
+            <input
+              type="radio"
+              name="order"
+              @change="onChooseShipping('fast')"
+            />
             <div>
-              <p class="text-green"><b>Average 7 business days</b></p>
+              <p class="text-green"><b>Average 3 business days</b></p>
               <p>$49.98 - Shipping</p>
             </div>
           </div>
@@ -142,11 +153,11 @@
 
           <div class="d-flex jc-sw fz-1 mt-2">
             <span>Items : </span>
-            <span>USD ${{cartTotalPrice}} </span>
+            <span><b>USD ${{ cartTotalPrice }}</b> </span>
           </div>
           <div class="d-flex jc-sw fz-1 bd-bottom">
             <span>Shipping and handling : </span>
-            <span>USD 92</span>
+            <span><b>USD ${{ shipmentPrice }}</b></span>
           </div>
 
           <div class="d-flex jc-sw fz-1 mt-3">
@@ -161,7 +172,7 @@
 
           <div class="oreder-total d-flex jc-sw mt-3">
             <span>Order Total</span>
-            <span>USD 3000023</span>
+            <span>USD ${{totalPriceWithShipping}}</span>
           </div>
         </div>
       </base-card>
@@ -197,6 +208,25 @@
 
 <script>
 export default {
+  async asyncData({ $axios, store }) {
+    try {
+      let res = await $axios.$post("/api/shipment", {
+        shipment: "normal",
+      });
+
+      store.dispatch("cart/setShipment", {
+        price: res.shipment.price,
+        estimatedDelivery: res.shipment.estimated,
+      });
+
+      return {
+        shipmentPrice: res.shipment.price,
+        estimatedDelivery: res.shipment.estimated,
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  },
   computed: {
     cart() {
       return this.$store.getters["cart/getCart"];
@@ -204,6 +234,10 @@ export default {
     cartTotalPrice() {
       return this.$store.getters["cart/cartTotalPrice"];
     },
+
+    totalPriceWithShipping(){
+      return this.cartTotalPrice + this.shipmentPrice;
+    }
   },
 
   methods: {
@@ -215,6 +249,20 @@ export default {
     },
     removeProduct(product) {
       this.$store.dispatch("cart/removeProduct", product);
+    },
+
+    async onChooseShipping(shipment) {
+      let res = await this.$axios.$post("/api/shipment", {
+        shipment: shipment,
+      });
+
+      this.$store.dispatch("cart/setShipment", {
+        price: res.shipment.price,
+        estimatedDelivery: res.shipment.estimated,
+      });
+
+        this.shipmentPrice = res.shipment.price;
+        this.estimatedDelivery = res.shipment.estimated;
     },
   },
 };
@@ -358,7 +406,7 @@ input[type="number"] {
   margin-top: 2rem;
 }
 
-.fa-shopping-basket{
+.fa-shopping-basket {
   font-size: 1rem;
   margin-right: 0.5rem;
 }
