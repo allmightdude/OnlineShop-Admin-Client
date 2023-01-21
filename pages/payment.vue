@@ -17,7 +17,7 @@
     </div>
 
     <h1 class="mt-2"><b>Make a payment</b></h1>
-    <p>your total price is ${{totalPriceWithShipping}}</p>
+    <p>your total price is ${{ totalPriceWithShipping }}</p>
     <p class="bd-bottom">Error</p>
 
     <form class="mt-2">
@@ -29,6 +29,8 @@
       if the address contains types or other errors , your package may be
       unavailable.
     </p>
+
+    <base-button @click.native="onPurchase">Purchase</base-button>
   </div>
 </template>
 
@@ -42,10 +44,37 @@ export default {
     };
   },
   computed: {
-    totalPriceWithShipping(){
-      return this.$store.getters['cart/totalPriceWithShipping'];
-    }
+    totalPriceWithShipping() {
+      return this.$store.getters["cart/totalPriceWithShipping"];
+    },
+    getCart() {
+      return this.$store.getters["cart/getCart"];
+    },
+    estimatedDelivery() {
+      return this.$store.getters["cart/estimatedDelivery"];
+    },
   },
+
+  methods: {
+    async onPurchase() {
+      try {
+        let token = await this.stripe.createToken(this.card);
+        let res = await this.$axios.$post("/api/payment", {
+          token: token,
+          totalPrice: this.totalPriceWithShipping,
+          cart: this.getCart,
+          estimatedDelivery: this.estimatedDelivery,
+        });
+
+        if (res.success) {
+          this.$router.replace("/");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+
   mounted() {
     this.stripe = Stripe(
       "pk_test_51MSgCbHMOwXm0bDgUIdPePivr0PZcd9TFRb90ptXExjeJJncqFm4rCMSpUJurqvb5SL2xHboPTxKzVF86ZJEbxzA00d94rUVT4"
