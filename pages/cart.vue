@@ -47,7 +47,7 @@
           <label for="">This order contains to gift</label>
           <input type="checkbox" />
         </div>
-        <base-button class="mt-3">Process to checkout</base-button>
+        <base-button linkTo="/placeorder" class="mt-3">Process to checkout</base-button>
       </base-card>
 
       <base-card class="mt-4">

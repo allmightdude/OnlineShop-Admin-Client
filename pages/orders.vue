@@ -23,7 +23,6 @@
         summary="This table shows how to create responsive tables using RWD-Table-Patterns' functionality"
         class="table table-bordered"
       >
-
         <thead>
           <tr>
             <th>
@@ -36,7 +35,9 @@
             </th>
             <th>
               SHIP TO <br />
-              <a href="#">Jack <i class="fa fa-angle-down"></i></a>
+              <a href="#"
+                >{{ $auth.state.user.name }} <i class="fa fa-angle-down"></i
+              ></a>
             </th>
             <th>
               ORDER # 114-785142-454758
@@ -45,34 +46,64 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="order in orders" :key="order._id" class="bd-bottom">
             <td>
               <h4>
-                <b>Estimated Delivery</b> <i class="fa fa-angle-down"></i>
+                <b>{{ order.estimatedDelivery }}</b>
+                <i class="fa fa-angle-down"></i>
               </h4>
             </td>
             <td>
-              <a href="#">Title</a>
-              <p>Sold by Amazon Expert Sales LLC.</p>
-              <p><b>Quantity : 4</b></p>
-              <p>$99</p>
+              <div
+                v-for="product in order.products"
+                :key="product._id"
+                class="product mt-3 bd-bottom"
+              >
+                <img
+                  class="product__img"
+                  :src="product.productID.photo"
+                  alt=""
+                />
+                <a href="#">{{ product.productID.title }}</a>
+                <p>Sold by Amazon Expert Sales LLC.</p>
+                <p><b>Quantity : 4</b></p>
+                <p>$99</p>
 
-              <div class="actions d-flex gap-sm mt-3">
-                <base-button size="sm-size">Buy it again</base-button>
-                <base-button size="sm-size" mode="grey"
-                  >View your item</base-button
-                >
+                <div class="actions d-flex gap-xs mt-3">
+                  <base-button size="sm-size">Buy it again</base-button>
+                  <base-button size="sm-size" mode="grey"
+                    >View your item</base-button
+                  >
+                </div>
               </div>
             </td>
             <td></td>
             <td></td>
           </tr>
+
+
         </tbody>
       </table>
     </div>
     <!--end of .table-responsive-->
   </div>
 </template>
+
+<script>
+export default {
+  async asyncData({ $axios }) {
+    try {
+      let response = await $axios.$get("/api/orders");
+      console.log(response.products);
+      return {
+        orders: response.products,
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .main {
@@ -122,6 +153,11 @@ td,
 th {
   padding: 1rem 1.5rem;
   font-size: 1.1rem;
+}
+
+.product__img {
+  width: 5rem;
+  height: 7rem;
 }
 
 </style>

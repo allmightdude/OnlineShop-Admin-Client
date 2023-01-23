@@ -4,7 +4,7 @@
     <!-- <span v-else>
       <slot></slot>
     </span> -->
-    <slot></slot>
+    <slot v-else></slot>
   </button>
 </template>
 
@@ -69,5 +69,7 @@ export default {
 a{
   color: #2c3e50;
   display: block;
+  width: 100%;
+  height: 100%;
 }
 </style>

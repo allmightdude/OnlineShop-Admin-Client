@@ -15,7 +15,6 @@
         </li>
       </ul>
     </div>
-
     <h1 class="mt-2"><b>Make a payment</b></h1>
     <p>your total price is ${{ totalPriceWithShipping }}</p>
     <p class="bd-bottom">Error</p>
@@ -67,7 +66,7 @@ export default {
         });
 
         if (res.success) {
-          this.$store.dispatch('cart/clearCart');
+          this.$store.dispatch("cart/clearCart");
           this.$router.replace("/");
         }
       } catch (error) {

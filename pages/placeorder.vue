@@ -137,7 +137,7 @@
 
     <div class="aside">
       <base-card class="subTotal">
-        <base-button class="mt-3">Place your order to USD</base-button>
+        <base-button linkTo="/payment" class="mt-3">Place your order to USD</base-button>
         <p class="fz-1 text-center mt-2">
           By placing your order , you agree to Amazon's
           <a href="#">privacy and policy</a> and
