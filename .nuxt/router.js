@@ -11,6 +11,7 @@ const _43f155e7 = () => interopDefault(import('..\\pages\\orders.vue' /* webpack
 const _4a6493f4 = () => interopDefault(import('..\\pages\\payment.vue' /* webpackChunkName: "pages/payment" */))
 const _979210ae = () => interopDefault(import('..\\pages\\placeorder.vue' /* webpackChunkName: "pages/placeorder" */))
 const _9e673bd2 = () => interopDefault(import('..\\pages\\profile.vue' /* webpackChunkName: "pages/profile" */))
+const _291181ac = () => interopDefault(import('..\\pages\\search.vue' /* webpackChunkName: "pages/search" */))
 const _1141dacc = () => interopDefault(import('..\\pages\\signup.vue' /* webpackChunkName: "pages/signup" */))
 const _1c791da2 = () => interopDefault(import('..\\pages\\address\\add.vue' /* webpackChunkName: "pages/address/add" */))
 const _df019470 = () => interopDefault(import('..\\pages\\address\\_id.vue' /* webpackChunkName: "pages/address/_id" */))
@@ -57,6 +58,10 @@ export const routerOptions = {
     path: "/profile",
     component: _9e673bd2,
     name: "profile"
+  }, {
+    path: "/search",
+    component: _291181ac,
+    name: "search"
   }, {
     path: "/signup",
     component: _1141dacc,

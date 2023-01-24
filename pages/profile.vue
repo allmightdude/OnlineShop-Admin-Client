@@ -68,9 +68,9 @@ export default {
 
     async onLogout() {
       await this.$auth.logout();
+      await this.$store.dispatch("cart/clearCart");
       await this.$auth.fetchUser();
-      this.$router.replace('/');
-
+      this.$router.replace("/");
     },
   },
 };

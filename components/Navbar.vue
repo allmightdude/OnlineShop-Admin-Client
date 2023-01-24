@@ -12,14 +12,16 @@
 
     <nav class="nav">
       <div class="nav__deliver">
-        <span v-if="$auth.user"
+        <!-- <span v-if="$auth.user"
           >Deliver to <br />
           <i class="fa fa-map-marker" aria-hidden="true"></i>
 
-          <b
-            >{{ $auth.user.address.country }} , {{ $auth.user.address.city }}</b
+          <i v-if="$auth.user.address">
+            <b
+            >{{ $auth.user.address.country }} , {{ $auth.user.address.city }}</b>
+          </i>
           ></span
-        >
+        > -->
 
         <span class="nav-cart-icon nav-sprite"></span>
       </div>

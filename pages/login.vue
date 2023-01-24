@@ -13,7 +13,7 @@
         </div>
         <div class="form__control">
           <label for="password">Password</label>
-          <input type="password" class="form__input"  v-model="password"/>
+          <input type="password" class="form__input" v-model="password" />
         </div>
 
         <div class="form__control">
@@ -44,14 +44,16 @@ export default {
   methods: {
     async onLogin() {
       try {
-          let res = await this.$auth.loginWith("local", {
-            data: {
-              email: this.email,
-              password: this.password,
-            },
-          });
+        await this.$auth.loginWith("local", {
+          data: {
+            email: this.email,
+            password: this.password,
+          },
+        });
 
-          console.log(res);
+        this.$auth.fetchUser();
+        this.$router.replace('/');
+
 
         // let user = await this.$auth.loginWith("local", {
         //   data: {

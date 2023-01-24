@@ -20,6 +20,9 @@
   "Navbar": {
     "description": "Auto imported from components/Navbar.vue"
   },
+  "ProductItem": {
+    "description": "Auto imported from components/ProductItem.vue"
+  },
   "ReviewItem": {
     "description": "Auto imported from components/ReviewItem.vue"
   },

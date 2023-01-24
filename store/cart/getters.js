@@ -25,4 +25,8 @@ export default {
   estimatedDelivery(state) {
     return state.shipment.estimatedDelivery;
   },
+
+  getFilterProducts(state){
+    return state.filterdProducts
+  }
 };

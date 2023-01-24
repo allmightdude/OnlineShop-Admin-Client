@@ -6,7 +6,8 @@ export default {
   state() {
     return {
       cart: [],
-      shipment : {}
+      shipment : {},
+      filterdProducts : []
     };
   },
   getters,

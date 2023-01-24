@@ -33,6 +33,9 @@ export default {
   
   clearCart(state){
     state.cart = [];
-    state.shipment = {}
+    state.shipment = {};
+  },
+  setFilter(state , products){
+    state.filterdProducts = products
   }
 };

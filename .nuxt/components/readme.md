@@ -13,6 +13,7 @@ You can directly use them in pages and other components without the need to impo
 - `<Footer>` | `<footer>` (components/Footer.vue)
 - `<MainResult>` | `<main-result>` (components/MainResult.vue)
 - `<Navbar>` | `<navbar>` (components/Navbar.vue)
+- `<ProductItem>` | `<product-item>` (components/ProductItem.vue)
 - `<ReviewItem>` | `<review-item>` (components/ReviewItem.vue)
 - `<ReviewSection>` | `<review-section>` (components/ReviewSection.vue)
 - `<Search>` | `<search>` (components/Search.vue)

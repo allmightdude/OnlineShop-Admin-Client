@@ -1,9 +1,30 @@
 <template>
   <div class="search">
-    <input type="text" class="search__input" placeholder="Search your favorite product" />
-    <button><i class="fa fa-search"></i></button>
+    <input v-model="searchValue" type="text" class="search__input" placeholder="Search your favorite product" />
+    <button @click="onSearch"><i class="fa fa-search"></i></button>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      searchValue : ""
+    }
+  },
+
+  methods: {
+    async onSearch(){
+      let res = await this.$axios.$get(`/api/search?title=${this.searchValue}`);
+      console.log(res.filterdProducts);
+      if(res.success){
+        this.$store.commit('cart/setFilter' , res.filterdProducts)
+        this.$router.push('/search');
+      }
+    }
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .search {

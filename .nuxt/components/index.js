@@ -5,6 +5,7 @@ export { default as FeaturedProduct } from '../..\\components\\FeaturedProduct.v
 export { default as Footer } from '../..\\components\\Footer.vue'
 export { default as MainResult } from '../..\\components\\MainResult.vue'
 export { default as Navbar } from '../..\\components\\Navbar.vue'
+export { default as ProductItem } from '../..\\components\\ProductItem.vue'
 export { default as ReviewItem } from '../..\\components\\ReviewItem.vue'
 export { default as ReviewSection } from '../..\\components\\ReviewSection.vue'
 export { default as Search } from '../..\\components\\Search.vue'
